@@ -1,36 +1,50 @@
 const httpStatus = require("http-status");
-const { Author } = require("../models");
+const { Horticultural } = require("../models");
 const { safeObjectId } = require("../helpers");
 
 const methods = {
   async list(request, response) {
-    const author = new Author();
+    const horticultural = new Horticultural();
 
     try {
-      const authors = await author.list();
+      const horticulturals = await horticultural.list();
 
-      response.status(httpStatus.OK).json(authors);
+      response.status(httpStatus.OK).json(horticulturals);
     } catch (error) {
       response.status(httpStatus.INTERNAL_SERVER_ERROR).json(error);
     }
   },
 
   async create(request, response) {
-    const { firstName, lastName, bornAt } = request.body;
+    const {
+      name,
+      shade,
+      image,
+      description,
+      category_id,
+      average_price,
+      measurement,
+    } = request.body;
 
-    const author = new Author();
+    const horticultural = new Horticultural();
 
-    if (!firstName || !lastName) {
+    if (
+      !name ||
+      !shade ||
+      !image ||
+      !description ||
+      !category_id ||
+      !average_price ||
+      !measurement
+    ) {
       return response.status(httpStatus.BAD_REQUEST).json({
-        error: 'The fields "firstName" and "lastName" are both required.',
+        error: 'The fields "Name" are required.',
       });
     }
 
     try {
-      const insertedObject = await author.insertOne({
-        firstName,
-        lastName,
-        bornAt: new Date(bornAt),
+      const insertedObject = await horticultural.insertOne({
+        name,
         createdAt: Date.now(),
         updatedAt: Date.now(),
       });
@@ -45,10 +59,12 @@ const methods = {
     const { id } = request.params;
     const convertedObjectId = safeObjectId(id);
 
-    const author = new Author();
+    const horticultural = new Horticultural();
 
     try {
-      const authorToReturn = await author.findOne({ _id: convertedObjectId });
+      const authorToReturn = await horticultural.findOne({
+        _id: convertedObjectId,
+      });
 
       response.status(httpStatus.OK).json(authorToReturn);
     } catch (error) {
@@ -59,20 +75,20 @@ const methods = {
   async update(request, response) {
     const { id } = request.params;
     const convertedObjectId = safeObjectId(id);
-    const { firstName, lastName, bornAt } = request.body;
+    const { name } = request.body;
 
-    if (!firstName || !lastName) {
+    if (!name) {
       return response.status(httpStatus.BAD_REQUEST).json({
-        error: 'The fields "firstName" and "lastName" are both required.',
+        error: 'The field "name" are required.',
       });
     }
 
-    const author = new Author();
+    const horticultural = new Horticultural();
 
     try {
-      const updatedObject = await author.updateOne(
+      const updatedObject = await horticultural.updateOne(
         { _id: convertedObjectId },
-        { firstName, lastName, bornAt: new Date(bornAt), updatedAt: Date.now() }
+        { name, updatedAt: Date.now() }
       );
 
       response.status(httpStatus.OK).json(updatedObject);
@@ -85,10 +101,10 @@ const methods = {
     const { id } = request.params;
     const convertedObjectId = safeObjectId(id);
 
-    const author = new Author();
+    const horticultural = new Horticultural();
 
     try {
-      const destroyedObject = await author.updateOne(
+      const destroyedObject = await horticultural.updateOne(
         { _id: convertedObjectId },
         { deletedAt: Date.now() }
       );

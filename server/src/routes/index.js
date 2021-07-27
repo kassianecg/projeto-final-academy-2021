@@ -1,9 +1,9 @@
 const router = require("express").Router();
 
-const posts = require("./posts");
-const authors = require("./authors");
+const categories = require("./category");
+const horticulturals = require("./horticulturals");
 
-router.use("/posts", posts);
-router.use("/authors", authors);
+router.use("/categories", categories);
+router.use("/horticulturals", horticulturals);
 
 module.exports = router;

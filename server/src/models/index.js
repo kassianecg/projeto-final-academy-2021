@@ -1,4 +1,4 @@
-const Author = require("./Author");
-const Post = require("./Post.js");
+const Category = require("./Category");
+const Horticultural = require("./Horticultural");
 
-module.exports = { Author, Post };
+module.exports = { Category, Horticultural };
