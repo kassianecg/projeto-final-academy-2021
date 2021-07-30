@@ -76,6 +76,19 @@ export const Home = () => {
       <Flex flexDirection="row" minHeight="85vh">
         <Box marginY="30">
           <Image src={Info} alt="Infos Hortinja" />
+
+          <Flex
+            justifyContent="space-between"
+            alignItems="center"
+            textAlign="center"
+          >
+            <Flex
+              flexDirection="row"
+              bg="red"
+              width="100px"
+              height="100px"
+            ></Flex>
+          </Flex>
           <Divider marginY="4" borderColor="#111111" />
         </Box>
       </Flex>
