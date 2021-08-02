@@ -174,7 +174,7 @@ export const Home = () => {
                   color="#111111"
                   paddingX="32px"
                 >
-                  Registros
+                  Valor Total
                 </Text>
               </Flex>
 
@@ -192,7 +192,7 @@ export const Home = () => {
                   width="100%"
                   paddingX="32px"
                 >
-                  Número de registros da Horta
+                  Preço total da Horta
                 </Text>
               </Flex>
               <Flex
@@ -218,7 +218,7 @@ export const Home = () => {
                   color="#111111"
                   paddingX="16px"
                 >
-                  #029
+                  R$ 2.099,00
                 </Text>
               </Flex>
             </Flex>
