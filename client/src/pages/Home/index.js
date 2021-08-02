@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Box,
   Divider,
@@ -13,7 +12,9 @@ import {
 } from "@chakra-ui/react";
 import Logo from "../../assets/logo.svg";
 import Info from "../../assets/infos.svg";
-import { FaFilter } from "react-icons/fa";
+import { FaFilter, FaClipboardList } from "react-icons/fa";
+import { AddButtons } from "./addButtons";
+import { Cards } from "./cards";
 
 export const Home = () => {
   return (
@@ -73,25 +74,161 @@ export const Home = () => {
         </Flex>
       </Flex>
 
-      <Flex flexDirection="row" minHeight="85vh">
-        <Box marginY="30">
+      <Flex flexDirection="row" marginY="32px">
+        <Box>
           <Image src={Info} alt="Infos Hortinja" />
 
           <Flex
             justifyContent="space-between"
             alignItems="center"
-            textAlign="center"
+            // textAlign="center"
+            marginTop="calc(66px - 160px)"
           >
             <Flex
-              flexDirection="row"
-              bg="red"
-              width="100px"
-              height="100px"
-            ></Flex>
+              flexDirection="column"
+              bg="rgba(255, 255, 255, 0.9)"
+              width="360px"
+              height="160px"
+              marginLeft="32px"
+              borderRadius="32px"
+              padding="16px"
+            >
+              <Flex
+                flexWrap="wrap"
+                justifyContent="initial"
+                flexDirection="column"
+              >
+                <Text
+                  fontSize="18px"
+                  fontWeight="bold"
+                  lineHeight="24px"
+                  color="#111111"
+                  paddingX="16px"
+                >
+                  Registros
+                </Text>
+              </Flex>
+
+              <Flex
+                flexWrap="wrap"
+                justifyContent="initial"
+                flexDirection="column"
+              >
+                <Text
+                  fontSize="14px"
+                  fontWeight="400"
+                  align="justify"
+                  lineHeight="21px"
+                  color="#111111"
+                  width="100%"
+                  paddingX="16px"
+                >
+                  Número de registros da Horta
+                </Text>
+              </Flex>
+              <Flex
+                justifyContent="center"
+                flexDirection="row"
+                marginTop="45px"
+                alignItems="center"
+              >
+                <Icon
+                  as={FaClipboardList}
+                  boxSize={8}
+                  color="#006B5C"
+                  w={8}
+                  h={8}
+                  // padding="2 "
+                />
+                <Text
+                  fontSize="24px"
+                  fontWeight="bold"
+                  align="justify"
+                  fontFamily="Poppins"
+                  lineHeight="36px"
+                  color="#111111"
+                  paddingX="16px"
+                >
+                  #029
+                </Text>
+              </Flex>
+            </Flex>
+            <Flex
+              flexDirection="column"
+              bg="rgba(255, 255, 255, 0.9)"
+              width="360px"
+              height="160px"
+              marginRight="32px"
+              borderRadius="32px"
+              paddingY="16px"
+            >
+              <Flex
+                flexWrap="wrap"
+                justifyContent="initial"
+                flexDirection="column"
+              >
+                <Text
+                  fontSize="18px"
+                  fontWeight="bold"
+                  lineHeight="24px"
+                  color="#111111"
+                  paddingX="32px"
+                >
+                  Registros
+                </Text>
+              </Flex>
+
+              <Flex
+                flexWrap="wrap"
+                justifyContent="initial"
+                flexDirection="column"
+              >
+                <Text
+                  fontSize="14px"
+                  fontWeight="400"
+                  align="justify"
+                  lineHeight="21px"
+                  color="#111111"
+                  width="100%"
+                  paddingX="32px"
+                >
+                  Número de registros da Horta
+                </Text>
+              </Flex>
+              <Flex
+                justifyContent="center"
+                flexDirection="row"
+                marginTop="45px"
+                alignItems="center"
+              >
+                <Icon
+                  as={FaClipboardList}
+                  boxSize={8}
+                  color="#006B5C"
+                  w={8}
+                  h={8}
+                  // padding="2 "
+                />
+                <Text
+                  fontSize="24px"
+                  fontWeight="bold"
+                  align="justify"
+                  fontFamily="Poppins"
+                  lineHeight="36px"
+                  color="#111111"
+                  paddingX="16px"
+                >
+                  #029
+                </Text>
+              </Flex>
+            </Flex>
           </Flex>
-          <Divider marginY="4" borderColor="#111111" />
+          <Divider marginTop="48px" borderColor="#111111" />
+          <AddButtons />
+          <Cards />
         </Box>
       </Flex>
+      {/* <Box justifyContent="space-between"></Box> */}
 
       <Box marginY="4">
         <Text alignItems="center" fontSize="15px" color="gray">
