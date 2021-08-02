@@ -7,7 +7,9 @@ const methods = {
     const horticultural = new Horticultural();
 
     try {
-      const horticulturals = await horticultural.list();
+      const horticulturals = await horticultural.list({
+        deletedAt: { $exists: false },
+      });
 
       response.status(httpStatus.OK).json(horticulturals);
     } catch (error) {
@@ -45,6 +47,12 @@ const methods = {
     try {
       const insertedObject = await horticultural.insertOne({
         name,
+        shade,
+        image,
+        description,
+        category_id,
+        average_price,
+        measurement,
         createdAt: Date.now(),
         updatedAt: Date.now(),
       });
@@ -62,11 +70,11 @@ const methods = {
     const horticultural = new Horticultural();
 
     try {
-      const authorToReturn = await horticultural.findOne({
+      const horticulturalToReturn = await horticultural.findOne({
         _id: convertedObjectId,
       });
 
-      response.status(httpStatus.OK).json(authorToReturn);
+      response.status(httpStatus.OK).json(horticulturalToReturn);
     } catch (error) {
       response.status(httpStatus.INTERNAL_SERVER_ERROR).json(error);
     }
@@ -75,7 +83,15 @@ const methods = {
   async update(request, response) {
     const { id } = request.params;
     const convertedObjectId = safeObjectId(id);
-    const { name } = request.body;
+    const {
+      name,
+      shade,
+      image,
+      description,
+      category_id,
+      average_price,
+      measurement,
+    } = request.body;
 
     if (!name) {
       return response.status(httpStatus.BAD_REQUEST).json({
@@ -88,7 +104,16 @@ const methods = {
     try {
       const updatedObject = await horticultural.updateOne(
         { _id: convertedObjectId },
-        { name, updatedAt: Date.now() }
+        {
+          name,
+          shade,
+          image,
+          description,
+          category_id,
+          average_price,
+          measurement,
+          updatedAt: Date.now(),
+        }
       );
 
       response.status(httpStatus.OK).json(updatedObject);

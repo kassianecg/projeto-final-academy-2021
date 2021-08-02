@@ -1,9 +1,15 @@
+import React, { useState, useEffect } from "react";
 import { Box, Button, Flex, Icon, Image, Text } from "@chakra-ui/react";
 import { FaPen, FaTrash, FaPenAlt } from "react-icons/fa";
 import { EditIcon, DeleteIcon } from "@chakra-ui/icons";
 import Alface from "../../assets/Alface.svg";
 
 export const Cards = () => {
+  const [categoriaId, setCategoriaId] = useState("");
+  const [nome, setNome] = useState("");
+
+  const [categorias, setCategorias] = useState([]);
+
   return (
     <Flex flexDirection="column" marginY="24px">
       <Flex alignItems="center">
