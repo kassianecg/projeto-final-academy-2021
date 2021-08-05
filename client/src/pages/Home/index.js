@@ -232,7 +232,7 @@ export const Home = () => {
 
       <Box marginY="4">
         <Text alignItems="center" fontSize="15px" color="gray">
-          Copyright © 2021 Feito com por Kazap Tecnologia - Todos os direitos
+          Copyright © 2021 Feito com ♥ por Kazap Tecnologia - Todos os direitos
           reservados
         </Text>
       </Box>
